@@ -29,7 +29,7 @@ def scorePrediction(data):
     df = pd.DataFrame(data=data[0:,0:],
                       columns=["Title", "Runtime (mins)", "Genres", "Num Votes", "Release Date", "Directors"])
     print(df)
-    with open('model_v1.pkl', 'rb') as f:
+    with open('data/model_v1.pkl', 'rb') as f:
         model = pickle.load(f)
     return model.predict( dataPreprocessing(df) )
 
@@ -51,4 +51,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000,debug=True)
